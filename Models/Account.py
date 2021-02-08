@@ -1,12 +1,14 @@
 import os
-
+from binance.websockets import BinanceSocketManager
 from binance.client import Client
 # init
 api_key = os.environ.get('binance_api')
 api_secret = os.environ.get('binance_secret')
-client = Client(api_key ='x6Xi3JQcpmtYzgupmqQ7b3zztRdTeKom7jpQVp4D9V6YVnsK9DHUQHwUU5D8a6N9', api_secret='JVbBnE9oQkB3YOa9Oz6WGpAt7com37lhfaIHlHEcPkmV2p4sY4hrmJ8RjGRqIWHl')
+client = Client(api_key ='slxV98HxyHJJDrXraDnTDOS3gBbfj7WICoRLxPO8sf8Fx9OFHQv6DqR3lmSwOqat', api_secret='8TzPuuLS6kMuMBh9MuFkhHMlelAlFBsjCc53YkBh1lVv6t29g06OWZR67o925kci')
 
 #client.API_URL = 'https://api.binance.com'
+# currently facing test Endpoint
+#client.API_URL = 'https://testnet.binance.vision/api'
 
 # Get all account details
 #print(client.get_account())
@@ -27,3 +29,4 @@ btc_price = client.get_symbol_ticker(symbol="BTCUSDT")
 prices = client.get_all_tickers()
 #print(prices)
 
+#buy_order = client.create_order(symbol='BTCUSDT' , side='SELL', type='MARKET', quantity=0.001)
