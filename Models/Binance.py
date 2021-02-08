@@ -10,7 +10,7 @@ from binance.websockets import BinanceSocketManager
 import matplotlib.pyplot as plt
 from twisted.internet import reactor
 
-#all coins that can be trading, some will need removing
+#all coins that can be traded, some will need removing
 
 tickers = ['BTCUSDT','ETHUSDT','DOGEUSDT','ADAUSDT','XLMUSDT','XRPUSDT','BNBUSDT','LITUSDT','DOTUSDT',
            'EGLDUSDT','EOSUSDT','LTCUSDT','SXPUSDT','LINKUSDT','BCHUSDT','ATOMUSDT','AAVEUSDT','USDCUSDT',
@@ -30,35 +30,26 @@ tickers = ['BTCUSDT','ETHUSDT','DOGEUSDT','ADAUSDT','XLMUSDT','XRPUSDT','BNBUSDT
            'LTCUPUSDT','AXSUSDT','BLZUSDT']
 
 
-# start the Websocket
-bsm = BinanceSocketManager(client)
-#conn_key = bsm.start_symbol_ticker_socket('BTCUSDT', btc_trade_history)
-#bsm.start()
-
 # valid intervals - 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M
 
 # get timestamp of earliest date data is available
 #timestamp = client._get_earliest_valid_timestamp('BTCUSDT', '1h')
 #print(timestamp)
 
-# request historical candle (or klines) data
-#bars = client.get_historical_klines('BTCUSDT', '1h',timestamp ,limit=300)
+
 
 for symbol in tickers:
     bars = client.get_historical_klines(symbol, Client.KLINE_INTERVAL_1HOUR, "300 hours ago UTC")
     for line in bars:
         del line[6:]
-#print(bars)
+# each symbol is
     df = pd.DataFrame(bars, columns=['date', 'open', 'high', 'low', 'close', 'Volume'])
     df['date'] = pd.to_datetime(df['date'],unit='ms')
     df['close'] = df['close'].astype('float64')
     df['Volume'] = df['Volume'].astype('float64')
 
     df.set_index('date', inplace=True)
-#print(btc_df.head())
-#df = pd.read_csv('btc_bars3.csv',parse_dates=True,index_col='date')
 
-#btc_df[]
     sma12 = btalib.sma(df.close,period=12)
     sma26 = btalib.sma(df.close,period=26)
     df['ema12'] = df['close'].ewm(span=12).mean()
@@ -69,8 +60,9 @@ for symbol in tickers:
 
 
     #"""Calculate On-Balance Volume (OBV)"""
-
+#not sure if the below lib method was calculating OBV correctly. Done it manually below.
 #df['obv'] = btalib.obv(df.close,df.Volume)[-1]
+
     OBV = []
     OBV.append(0)
     for i in range(1, len(df.close)):
@@ -137,11 +129,11 @@ for symbol in tickers:
     print(action)
     if action == 'BUY':
         break
-    if action =='Buy':
+    if action =='BUY':
         # Current set to test buy - use client.create_order for real-money buy
         buy_order = client.create_test_order(symbol=symbol , side='BUY', type='MARKET', quantity=100)
         print(buy_order)
-    while action == 'Buy':
+    while action == 'BUY':
         currentTrade = client.get_historical_klines(symbol, Client.KLINE_INTERVAL_1HOUR, "300 hours ago UTC")
         for x in currentTrade:
             del line[6:]
@@ -220,8 +212,8 @@ for symbol in tickers:
         C_obv_pc = float(df_last_current['OBV_pc'].values[0])
 
         if (C_ema12ltema26co == True and C_macdltsignal == True):
-            buy_order = client.create_test_order(symbol=x, side='BUY', type='MARKET', quantity=100)
-            print(buy_order)
+            sell_order = client.create_test_order(symbol=x, side='BUY', type='MARKET', quantity=100)
+            print(sell_order)
             action = 'SELL'
 
 
