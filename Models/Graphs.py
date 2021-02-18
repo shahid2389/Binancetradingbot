@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from twisted.internet import reactor
 
 
-bars = client.get_historical_klines('BTCUSDT', Client.KLINE_INTERVAL_1HOUR, "300 hours ago UTC")
+bars = client.get_historical_klines('WTCUSDT', Client.KLINE_INTERVAL_1HOUR, "300 hours ago UTC")
 for line in bars:
         del line[6:]
 #print(bars)
@@ -46,6 +46,7 @@ df['OBV_EMA'] = df['OBV'].ewm(com=20).mean()
 df['OBV_pc'] = df['OBV'].pct_change() * 100
 df['OBV_pc'] = np.round(df['OBV_pc'].fillna(0), 2)
 
+print(df['OBV_pc'])
 # Visually show close, ema12 and ema26
 #Create and plot the graph
 plt.figure(figsize=(12.2,4.5)) #width = 12.2in, height = 4.5

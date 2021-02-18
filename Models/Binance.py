@@ -12,22 +12,31 @@ from twisted.internet import reactor
 
 #all coins that can be traded, some will need removing
 
-tickers = ['BTCUSDT','ETHUSDT','DOGEUSDT','ADAUSDT','XLMUSDT','XRPUSDT','BNBUSDT','LITUSDT','DOTUSDT',
-           'EGLDUSDT','EOSUSDT','LTCUSDT','SXPUSDT','LINKUSDT','BCHUSDT','ATOMUSDT','AAVEUSDT','USDCUSDT',
-           'TRXUSDT','UNIUSDT','SUSHIUSDT','EURUSDT','GRTUSDT','1INCHUSDT','AVAXUSDT','ALPHAUSDT','QTUMUSDT',
-           'VETUSDT','ZRXUSDT','MANAUSDT','CRVUSDT','ALGOUSDT','LUNAUSDT','XTZUSDT','OMGUSDT','TWTUSDT','ETCUSDT',
-           'BTCUPUSDT','ETHUPUSDT','UNFIUSDT','BATUSDT','NEOUSDT','REEFUSDT','XVSUSDT','NEARUSDT','ADAUPUSDT',
-           'SNXUSDT','KAVAUSDT','SOLUSDT','FILUSDT','IOSTUSDT','ONTUSDT','IOTAUSDT','HARDUSDT',
-           'DASHUSDT','MKRUSDT','CVCUSDT','YFIUSDT','ZECUSDT','MATICUSDT','ICXUSDT','XLMUPUSDT','BTCDOWNUSDT',
-           'BALUSDT','THETAUSDT','TOMOUSDT','RENUSDT','DNTUSDT','FTMUSDT','SXPUPUSDT','ZILUSDT','COMPUSDT',
-           'YFIIUSDT','XRPUPUSDT','LRCUSDT','BANDUSDT','UMAUSDT','WAVESUSDT','RUNEUSDT','RSRUSDT','EOSUPUSDT','MFTUSDT',
-           'ANKRUSDT','TRBUSDT','SRMUSDT','SUNUSDT','OCEANUSDT','XEMUSDT','RIFUSDT','ENJUSDT','AKROUSDT','XMRUSDT','TRUUSDT',
-           'HBARUSDT','ETHDOWNUSDT','ADADOWNUSDT','XTZUPUSDT','FLMUSDT','STMXUSDT','SANDUSDT','KNCUSDT',
-           'BTTUSDT','CELOUSDT','DOTUPUSDT','BNBDOWNUSDT','TRXUPUSDT','LINKUPUSDT','BELUSDT','FETUSDT',
-           'HNTUSDT','SUSHIUPUSDT','RVNUSDT','PNTUSDT','KSMUSDT','INJUSDT','CTKUSDT','AAVEUPUSDT','COTIUSDT',
-           'OXTUSDT','SKLUSDT','BZRXUSDT','STXUSDT','CHZUSDT','NANOUSDT','ROSEUSDT','AUDUSDT','FTTUSDT',
-           'UNIUPUSDT','FUNUSDT','DIAUSDT','JSTUSDT','NPXSUSDT','ZENUSDT','RLCUSDT','YFIUPUSDT','ANTUSDT',
-           'LTCUPUSDT','AXSUSDT','BLZUSDT']
+tickers = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'BCCUSDT', 'NEOUSDT', 'LTCUSDT', 'QTUMUSDT', 'ADAUSDT', 'XRPUSDT', 'EOSUSDT',
+           'TUSDUSDT', 'IOTAUSDT', 'XLMUSDT', 'ONTUSDT', 'TRXUSDT', 'ETCUSDT', 'ICXUSDT', 'VENUSDT', 'NULSUSDT', 'VETUSDT',
+           'PAXUSDT', 'BCHABCUSDT', 'BCHSVUSDT', 'USDCUSDT', 'LINKUSDT', 'WAVESUSDT', 'BTTUSDT', 'USDSUSDT', 'ONGUSDT', 'HOTUSDT',
+           'ZILUSDT', 'ZRXUSDT', 'FETUSDT', 'BATUSDT', 'XMRUSDT', 'ZECUSDT', 'IOSTUSDT', 'CELRUSDT', 'DASHUSDT', 'NANOUSDT', 'OMGUSDT',
+           'THETAUSDT', 'ENJUSDT', 'MITHUSDT', 'MATICUSDT', 'ATOMUSDT', 'TFUELUSDT', 'ONEUSDT', 'FTMUSDT', 'ALGOUSDT', 'USDSBUSDT', 'GTOUSDT',
+           'ERDUSDT', 'DOGEUSDT', 'DUSKUSDT', 'ANKRUSDT', 'WINUSDT', 'COSUSDT', 'NPXSUSDT', 'COCOSUSDT', 'MTLUSDT', 'TOMOUSDT', 'PERLUSDT', 'DENTUSDT',
+           'MFTUSDT', 'KEYUSDT', 'STORMUSDT', 'DOCKUSDT', 'WANUSDT', 'FUNUSDT', 'CVCUSDT', 'CHZUSDT', 'BANDUSDT', 'BUSDUSDT', 'BEAMUSDT', 'XTZUSDT', 'RENUSDT',
+           'RVNUSDT', 'HCUSDT', 'HBARUSDT', 'NKNUSDT', 'STXUSDT', 'KAVAUSDT', 'ARPAUSDT', 'IOTXUSDT', 'RLCUSDT', 'MCOUSDT', 'CTXCUSDT', 'BCHUSDT', 'TROYUSDT',
+           'VITEUSDT', 'FTTUSDT', 'EURUSDT', 'OGNUSDT', 'DREPUSDT', 'BULLUSDT', 'BEARUSDT', 'ETHBULLUSDT', 'ETHBEARUSDT', 'TCTUSDT', 'WRXUSDT', 'BTSUSDT',
+           'LSKUSDT', 'BNTUSDT', 'LTOUSDT', 'EOSBULLUSDT', 'EOSBEARUSDT', 'XRPBULLUSDT', 'XRPBEARUSDT', 'STRATUSDT', 'AIONUSDT', 'MBLUSDT', 'COTIUSDT',
+           'BNBBULLUSDT', 'BNBBEARUSDT', 'STPTUSDT', 'WTCUSDT', 'DATAUSDT', 'XZCUSDT', 'SOLUSDT', 'CTSIUSDT', 'HIVEUSDT', 'CHRUSDT', 'BTCUPUSDT',
+           'BTCDOWNUSDT', 'GXSUSDT', 'ARDRUSDT', 'LENDUSDT', 'MDTUSDT', 'STMXUSDT', 'KNCUSDT', 'REPUSDT', 'LRCUSDT', 'PNTUSDT', 'COMPUSDT',
+           'BKRWUSDT', 'SCUSDT', 'ZENUSDT', 'SNXUSDT', 'ETHUPUSDT', 'ETHDOWNUSDT', 'ADAUPUSDT', 'ADADOWNUSDT', 'LINKUPUSDT',
+           'LINKDOWNUSDT', 'VTHOUSDT', 'DGBUSDT', 'GBPUSDT', 'SXPUSDT', 'MKRUSDT', 'DAIUSDT', 'DCRUSDT', 'STORJUSDT', 'BNBUPUSDT',
+           'BNBDOWNUSDT', 'XTZUPUSDT', 'XTZDOWNUSDT', 'MANAUSDT', 'AUDUSDT', 'YFIUSDT', 'BALUSDT', 'BLZUSDT', 'IRISUSDT', 'KMDUSDT', 'JSTUSDT',
+           'SRMUSDT', 'ANTUSDT', 'CRVUSDT', 'SANDUSDT', 'OCEANUSDT', 'NMRUSDT', 'DOTUSDT', 'LUNAUSDT', 'RSRUSDT', 'PAXGUSDT', 'WNXMUSDT', 'TRBUSDT',
+           'BZRXUSDT', 'SUSHIUSDT', 'YFIIUSDT', 'KSMUSDT', 'EGLDUSDT', 'DIAUSDT', 'RUNEUSDT', 'FIOUSDT', 'UMAUSDT', 'EOSUPUSDT', 'EOSDOWNUSDT', 'TRXUPUSDT',
+           'TRXDOWNUSDT', 'XRPUPUSDT', 'XRPDOWNUSDT', 'DOTUPUSDT', 'DOTDOWNUSDT', 'BELUSDT', 'WINGUSDT', 'LTCUPUSDT', 'LTCDOWNUSDT',
+           'UNIUSDT', 'NBSUSDT', 'OXTUSDT', 'SUNUSDT', 'AVAXUSDT', 'HNTUSDT', 'FLMUSDT', 'UNIUPUSDT', 'UNIDOWNUSDT', 'ORNUSDT', 'UTKUSDT',
+           'XVSUSDT', 'ALPHAUSDT', 'AAVEUSDT', 'NEARUSDT', 'SXPUPUSDT', 'SXPDOWNUSDT', 'FILUSDT', 'FILUPUSDT', 'FILDOWNUSDT', 'YFIUPUSDT',
+           'YFIDOWNUSDT', 'INJUSDT', 'AUDIOUSDT', 'CTKUSDT', 'BCHUPUSDT', 'BCHDOWNUSDT', 'AKROUSDT', 'AXSUSDT', 'HARDUSDT', 'DNTUSDT', 'STRAXUSDT',
+           'UNFIUSDT', 'ROSEUSDT', 'AVAUSDT', 'XEMUSDT', 'AAVEUPUSDT', 'AAVEDOWNUSDT', 'SKLUSDT', 'SUSDUSDT', 'SUSHIUPUSDT', 'SUSHIDOWNUSDT',
+           'XLMUPUSDT', 'XLMDOWNUSDT', 'GRTUSDT', 'JUVUSDT', 'PSGUSDT', '1INCHUSDT', 'REEFUSDT', 'OGUSDT', 'ATMUSDT', 'ASRUSDT', 'CELOUSDT',
+           'RIFUSDT', 'BTCSTUSDT', 'TRUUSDT', 'CKBUSDT', 'TWTUSDT', 'FIROUSDT', 'LITUSDT', 'SFPUSDT']
+
 
 
 # valid intervals - 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h, 8h, 12h, 1d, 3d, 1w, 1M
@@ -127,12 +136,17 @@ for symbol in tickers:
         action = 'WAIT'
 #print(df)
     print(action)
-    if action == 'BUY':
-        break
+    #if action == 'BUY':
+        #break
+
     if action =='BUY':
         # Current set to test buy - use client.create_order for real-money buy
-        buy_order = client.create_test_order(symbol=symbol , side='BUY', type='MARKET', quantity=100)
-        print(buy_order)
+        buyprice = df_last['close']
+        buydate = df_last['date']
+        print(buyprice)
+        print(buydate)
+        #buy_order = client.create_test_order(symbol=symbol , side='BUY', type='MARKET', quantity=100)
+        #print(buy_order)
     while action == 'BUY':
         currentTrade = client.get_historical_klines(symbol, Client.KLINE_INTERVAL_1HOUR, "300 hours ago UTC")
         for x in currentTrade:
@@ -215,16 +229,14 @@ for symbol in tickers:
             sell_order = client.create_test_order(symbol=x, side='BUY', type='MARKET', quantity=100)
             print(sell_order)
             action = 'SELL'
+            print(action)
+            print(currentTradedf['date'])
+            print(currentTradedf['close'])
 
 
 
-
-#export DataFrome to csf
+# export DataFrome to csf
 df.to_csv('btc_bars3.csv')
-
-
-
-
 
 
 

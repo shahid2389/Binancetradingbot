@@ -1,6 +1,7 @@
 import os
 from binance.websockets import BinanceSocketManager
 from binance.client import Client
+import re
 # init
 api_key = os.environ.get('binance_api')
 api_secret = os.environ.get('binance_secret')
@@ -26,7 +27,18 @@ client = Client(api_key ='slxV98HxyHJJDrXraDnTDOS3gBbfj7WICoRLxPO8sf8Fx9OFHQv6Dq
 btc_price = client.get_symbol_ticker(symbol="BTCUSDT")
 # print full output (dictionary)
 #print(btc_price)
-prices = client.get_all_tickers()
 #print(prices)
 
 #buy_order = client.create_order(symbol='BTCUSDT' , side='SELL', type='MARKET', quantity=0.001)
+all = client.get_exchange_info()
+#print(all)
+
+
+#Below code will get the all the USDT tickets to trade
+prices = client.get_all_tickers()
+sm = [li['symbol'] for li in prices]
+result1 = [i for i in sm if i.endswith('USDT')]
+#print(result)
+#print(result1)
+
+
